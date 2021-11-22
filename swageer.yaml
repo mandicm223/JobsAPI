@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  title: Jobs API
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://node-jobs-api-0-1-3-1-2.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register user
+      operationId: Registeruser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisteruserRequest'
+            example:
+              name: markan
+              email: markan@gmail.com
+              password: markan1234
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login user
+      operationId: Loginuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginuserRequest'
+            example:
+              email: djesi@gmail.com
+              password: mrskuci
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /jobs:
+    post:
+      tags:
+      - Jobs
+      summary: Create job
+      operationId: Createjob
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatejobRequest'
+            example:
+              position: intern
+              company: Google
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - Jobs
+      summary: Get all jobs
+      operationId: Getalljobs
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /jobs/{id}:
+    parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+      required: true
+      description: the job id
+    get:
+      tags:
+      - Jobs
+      summary: Get specific job
+      operationId: Getspecificjob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+      - Jobs
+      summary: Update job
+      operationId: Updatejob
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatejobRequest'
+            example:
+              position: berac
+              company: dinamika
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Jobs
+      summary: Delete job
+      operationId: Deletejob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    RegisteruserRequest:
+      title: RegisteruserRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: bezi
+    LoginuserRequest:
+      title: LoginuserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: djesi@gmail.com
+        password: mrskuci
+    CreatejobRequest:
+      title: CreatejobRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: bezi
+    UpdatejobRequest:
+      title: UpdatejobRequest
+      required:
+      - position
+      - company
+      type: object
+      properties:
+        position:
+          type: string
+        company:
+          type: string
+      example:
+        position: berac
+        company: dinamika
+    DeletejobRequest:
+      title: DeletejobRequest
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+      example:
+        name: bezi
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+  description: ''
+- name: Jobs
+  description: ''
