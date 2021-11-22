@@ -1,4 +1,11 @@
 # JobsAPI
+
+## API can be accessed at this address: 
+```bash
+https://node-jobs-api-0-1-3-1-2.herokuapp.com/
+```
+### On that page you will be provided with documentation link where you can find routes and test API.
+
 NodeJS Jobs REST API
 
 #### Here you can see some guidelines I wrote while working on this project
